@@ -1,0 +1,14 @@
+{
+  "bindings": [
+    {
+      "type": "kafkaTrigger",
+      "direction": "in",
+      "name": "event",
+      "topic": "twitter",
+      "brokerList": "%BrokerList%",
+      "consumerGroup": "%ConsumerGroup%",
+      "dataType": "string"
+    }
+  ],
+  "scriptFile": "../dist/KafkaTwitterTrigger/index.js"
+}
