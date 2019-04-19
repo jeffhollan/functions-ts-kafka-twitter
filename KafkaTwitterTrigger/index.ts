@@ -30,7 +30,7 @@ const kafkaTrigger: AzureFunction = async function (context: Context, event: Buf
         {
             'tweettext': eventData['text'],
             'sentiment': r.data['documents'][0]['score'],
-            'timestamp': Date.now(),
+            'timestamp': new Date().toJSON(),
             'location': eventData['user']['location'],
             'handle': eventData['user']['screen_name']
         }
