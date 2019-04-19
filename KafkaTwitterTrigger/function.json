@@ -7,7 +7,7 @@
       "topic": "twitter",
       "brokerList": "%BrokerList%",
       "consumerGroup": "%ConsumerGroup%",
-      "dataType": "string"
+      "dataType": "binary"
     }
   ],
   "scriptFile": "../dist/KafkaTwitterTrigger/index.js"

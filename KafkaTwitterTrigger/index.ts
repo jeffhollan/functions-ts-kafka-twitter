@@ -1,14 +1,17 @@
 import { AzureFunction, Context } from "@azure/functions"
 import axios from "axios" 
+import { StringDecoder } from "string_decoder"
 
 const COGNITIVE_URL = process.env['COGNITIVE_URL']
 const COGNITIVE_KEY = process.env['COGNITIVE_KEY']
 const POWER_BI_URL = process.env['POWER_BI_URL']
 
-const kafkaTrigger: AzureFunction = async function (context: Context, event: string): Promise<void> {
-    
+const kafkaTrigger: AzureFunction = async function (context: Context, event: Buffer): Promise<void> {
+    const dec = new StringDecoder('utf-8');
+    let event_str = dec.write(event);
+    context.log(event_str);
     // Process the event data
-    let eventData = JSON.parse(event);
+    let eventData = JSON.parse(event_str);
 
     context.log('Kafka trigger fired!', eventData);   
 
